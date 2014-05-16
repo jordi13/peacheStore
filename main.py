@@ -60,3 +60,21 @@ while eleccion != 9:
         apps.crearApp(nombre)
         apps.sumarComentari(nombre)
         menu()
+    if eleccion == 8:
+        print("Introduce el proveedor :")
+        varProveedor = str(input())
+
+        with open('apps.txt',mode='r',encoding='utf-8')as archivo:
+            encontrado = False
+
+            for linia in archivo:
+                nombre,proveedor,fecha_publi,precio,num_descargas,num_puntuaciones,puntuacion,num_comentarios = linia.split(',',7)
+                num_comentarios = num_comentarios.strip("\n")
+
+                if varProveedor == proveedor:
+                    print(linia)
+                    encontrado = True
+
+            if encontrado == False:
+                print("No encontrado el proveedor")
+        menu()
